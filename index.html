@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e1a">
+  <title>Vistamations | Giving People Their Time Back</title>
+  <style>
+    :root {
+      --navy-deep: #0a0b0c;
+      --navy-light: #121317;
+      --gold: #D4AF37;
+      --gold-bright: #fceabb;
+      --amber: #ffbf00;
+      --sunrise: #ff7e5f;
+      --white: #f9f9f9;
+      --muted: #85899f;
+      --line: rgba(212, 175, 55, 0.15);
+    }
+    * { box-sizing: border-box; }
+    body { 
+      margin: 0; 
+      min-height: 100vh; 
+      background: var(--navy-deep); 
+      color: var(--white); 
+      font: 16px/1.6 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; 
+      overflow-x: hidden;
+    }
+    
+    /* Premium Layout */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    
+    /* Header/Nav */
+    header { 
+      height: 80px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between; 
+      border-bottom: 1px solid var(--line); 
+      background: rgba(10, 11, 12, 0.7); 
+      backdrop-filter: blur(20px); 
+      position: sticky; 
+      top: 0; 
+      z-index: 100; 
+    }
+    .brand { 
+      display: flex; 
+      align-items: center; 
+      gap: 12px; 
+      font-size: 22px; 
+      font-weight: 800; 
+      letter-spacing: -0.5px; 
+      color: var(--gold);
+    }
+    .brand-mark { 
+      display: grid; 
+      place-items: center; 
+      width: 38px; 
+      height: 38px; 
+      border-radius: 10px; 
+      color: var(--navy-deep); 
+      background: linear-gradient(145deg, var(--gold), var(--amber)); 
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+    }
+    .brand-mark svg { width: 22px; height: 22px; }
+
+    /* Hero Section */
+    .hero { 
+      padding: 120px 0 80px; 
+      text-align: center; 
+      position: relative; 
+      background: radial-gradient(circle at top right, #1a213a, transparent),
+                  radial-gradient(circle at bottom left, #0a0e1a, transparent);
+    }
+    .hero h1 { 
+      font-size: clamp(2.5rem, 8vw, 4.5rem); 
+      line-height: 1.1; 
+      margin: 0 0 20px; 
+      font-weight: 800; 
+      font-style: italic;
+      background: linear-gradient(to bottom, var(--white), var(--gold)); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -2px;
+    }
+    .hero p { 
+      font-size: clamp(1.1rem, 3vw, 1.4rem); 
+      color: var(--muted); 
+      max-width: 700px; 
+      margin: 0 auto 40px; 
+    }
+    .cta-button { 
+      padding: 16px 32px; 
+      background: linear-gradient(145deg, var(--gold), var(--amber)); 
+      color: var(--navy-deep); 
+      border: none; 
+      border-radius: 50px; 
+      font-weight: 700; 
+      font-size: 18px; 
+      cursor: pointer; 
+      transition: transform 0.2s, box-shadow 0.2s; 
+      box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+    }
+    .cta-button:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(212, 175, 55, 0.5); }
+
+    /* Team Grid */
+    .section-title { 
+      text-align: center; 
+      font-size: 32px; 
+      margin-bottom: 50px; 
+      color: var(--gold); 
+      text-transform: uppercase; 
+      letter-spacing: 3px;
+    }
+    .team-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+      gap: 30px; 
+      padding-bottom: 100px;
+    }
+    .team-card { 
+      background: rgba(22, 27, 46, 0.4); 
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--line); 
+      border-radius: 20px; 
+      padding: 30px; 
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s; 
+      position: relative;
+      overflow: hidden;
+    }
+    .team-card:hover { 
+      border-color: var(--gold); 
+      transform: translateY(-10px); 
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+    .team-card h3 { margin: 0 0 5px; font-size: 22px; color: var(--white); }
+    .team-card .role { color: var(--gold); font-size: 14px; font-weight: 600; text-transform: uppercase; margin-bottom: 15px; display: block; }
+    .team-card .archetype { font-style: italic; color: var(--muted); font-size: 13px; margin-bottom: 15px; display: block; }
+    .team-card .shadow { font-size: 12px; color: #5a607a; border-top: 1px solid var(--line); padding-top: 15px; margin-top: 15px; }
+
+    /* Launch Celebration Section */
+    .launch-event { 
+      padding: 100px 0; 
+      background: linear-gradient(to bottom, var(--navy-deep), #1a213a); 
+      text-align: center; 
+      border-top: 1px solid var(--line);
+    }
+    .event-visual { 
+      width: 100%; 
+      max-width: 1000px; 
+      aspect-ratio: 16/9; 
+      margin: 40px auto; 
+      background: var(--navy-light); 
+      border-radius: 30px; 
+      display: grid; 
+      place-items: center; 
+      border: 2px solid var(--gold); 
+      color: var(--gold); 
+      font-style: italic;
+      box-shadow: 0 0 50px rgba(212, 175, 55, 0.2);
+    }
+
+    footer { 
+      padding: 60px 0; 
+      text-align: center; 
+      border-top: 1px solid var(--line); 
+      color: var(--muted); 
+      font-size: 14px;
+    }
+
+    @media(max-width: 768px) {
+      .hero h1 { font-size: 3rem; }
+      .team-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container" style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v20M17 5H7M17 19H7" stroke-linecap="round"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </span>
+        vistamations
+      </div>
+      <button class="cta-button" style="padding: 10px 20px; font-size: 14px;">Reclaim Your Time</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Giving People<br>Their Time Back</h1>
+      <p>The world's first corporate AI distribution business designed to orchestrate elite agent teams, removing the friction of operations and returning hours to your life.</p>
+      <button class="cta-button">Explore the Orchestration</button>
+    </div>
+  </section>
+
+  <section class="container" style="padding: 100px 0;">
+    <h2 class="section-title">The Orchestrators</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <h3>Merlin</h3>
+        <span class="role">AI Solutions Architect</span>
+        <span class="archetype">The Magician</span>
+        <p>Designing the invisible workflows that power your business.</p>
+        <div class="shadow">Shadow: Builds clever systems nobody asked for.</div>
+      </div>
+      <div class="team-card">
+        <h3>Gordon</h3>
+        <span class="role">Training & Onboarding Coach</span>
+        <span class="archetype">The Mentor</span>
+        <p>Bridging the gap between human intuition and AI precision.</p>
+        <div class="shadow">Shadow: Frustrated when people don't "get it" fast.</div>
+      </div>
+      <div class="team-card">
+        <h3>Big Brother</h3>
+        <span class="role">Ethics & Compliance Officer</span>
+        <span class="archetype">The Ruler / Guardian</span>
+        <p>Ensuring sovereign intelligence operates with absolute integrity.</p>
+        <div class="shadow">Shadow: Rigid, the "department of no".</div>
+      </div>
+      <div class="team-card">
+        <h3>Olivia</h3>
+        <span class="role">Customer Success Manager</span>
+        <span class="archetype">The Caregiver</span>
+        <p>The human heartbeat of our client relationships.</p>
+        <div class="shadow">Shadow: Takes every client problem home.</div>
+      </div>
+      <div class="team-card">
+        <h3>Trinity</h3>
+        <span class="role">Data Engineer</span>
+        <span class="archetype">The Sage / Hermit</span>
+        <p>Weaving the data streams into a singular, ordered truth.</p>
+        <div class="shadow">Shadow: Retreats into code, hard to reach.</div>
+      </div>
+      <div class="team-card">
+        <h3>Terence</h3>
+        <span class="role">Automation Specialist</span>
+        <span class="archetype">The Trickster</span>
+        <p>Finding the shortcuts that redefine "impossible".</p>
+        <div class="shadow">Shadow: Shortcuts that skip the human bit.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="launch-event">
+    <div class="container">
+      <h2 class="section-title">The Grand Opening</h2>
+      <p style="color: var(--muted); max-width: 600px; margin: 0 auto 40px;">Join us for a night of celebration as we launch the new era of AI orchestration. A fusion of luxury, logic, and reclaimed time.</p>
+      <div class="event-visual">
+        [Hero Image: Rooftop party at golden hour, champagne toasts, and golden clock-confetti]
+      </div>
+      <button class="cta-button" style="margin-top: 40px;">Request an Invitation</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Vistamations. Orchestrating Intelligence. Giving Time Back.</p>
+    </div>
+  </footer>
+</body>
+</html>
